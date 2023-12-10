@@ -9,9 +9,9 @@ public class InputTextInteractable : Interactable
     TMP_InputField _inputField;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-
+        base.Start();
     }
 
     protected override void Interact()

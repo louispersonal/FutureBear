@@ -8,23 +8,22 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     string _triggerTag;
 
-    [SerializeField]
-    GameObject _interactPrompt;
+    protected GameController _gameController;
+
+    private Popup _currentLinkedPopup;
 
     private bool _triggerActive = false;
 
     private bool _interactActive = false;
 
-    private void Start()
+    protected virtual void Start()
     {
         if(GetComponent<BoxCollider2D>() == null)
         {
             Debug.LogError("No collider on interactable object");
         }
-        if (_interactPrompt.GetComponentInChildren<TMP_Text>() == null)
-        {
-            Debug.LogError("No text on interactable prompt");
-        }
+
+        _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     private void Update()
@@ -84,13 +83,12 @@ public class Interactable : MonoBehaviour
 
     protected virtual void ShowInteractPrompt()
     {
-        _interactPrompt.SetActive(true);
-        _interactPrompt.GetComponentInChildren<TMP_Text>().text = "E";
+        _currentLinkedPopup = _gameController.PopupPoolController.DisplayPopup(this.gameObject.transform.position, "E");
     }
 
     protected virtual void HideInteractPrompt()
     {
-        _interactPrompt.SetActive(false);
+        _gameController.PopupPoolController.DismissPopup(_currentLinkedPopup);
     }
 
     // Interact means that a triggerable type in the trigger zone interacted

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UIController
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 2607900987
+    locked: 0
+  - name: Walls
+    uniqueID: 3882010653
+    locked: 0
+  - name: Objects
+    uniqueID: 1346008731
+    locked: 0
+  - name: Player
+    uniqueID: 3774476097
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1805281607
+    locked: 0
+  - name: Popups
+    uniqueID: 2837302607
     locked: 0

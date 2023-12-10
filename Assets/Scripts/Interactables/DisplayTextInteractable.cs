@@ -7,31 +7,27 @@ using UnityEngine;
 public class DisplayTextInteractable : Interactable
 {
     [SerializeField]
-    GameObject _textObject;
+    UIController.DisplayMode _displayMode;
 
     [SerializeField]
     string _text;
 
-    private void Start()
+    protected override void Start()
     {
-        if( _textObject.GetComponentInChildren<TMP_Text>() == null)
-        {
-            Debug.LogError("No text on display text object");
-        }
+        base.Start();
     }
 
     protected override void Interact()
     {
         base.Interact();
 
-        _textObject.SetActive(true);
-        _textObject.GetComponentInChildren<TMP_Text>().text = _text;
+        _gameController.UIController.DisplayMessage(_displayMode, _text);
     }
 
     protected override void UnInteract()
     {
         base.UnInteract();
 
-        _textObject.SetActive(false);
+        _gameController.UIController.ClearMessages();
     }
 }
