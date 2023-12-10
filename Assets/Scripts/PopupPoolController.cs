@@ -44,7 +44,7 @@ public class PopupPoolController : MonoBehaviour
                 return _popups[i];
             }
         }
-        Popup newPopup = Instantiate(_popupPrefab);
+        Popup newPopup = Instantiate(_popupPrefab, this.transform);
         _popups.Add(newPopup);
         return newPopup;
     }
