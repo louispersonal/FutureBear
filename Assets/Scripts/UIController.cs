@@ -11,6 +11,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     GameObject _notepad;
 
+    [SerializeField]
+    DoorCode _doorCode;
+
     public enum DisplayMode
     {
         COMPUTER,
@@ -48,5 +51,10 @@ public class UIController : MonoBehaviour
     {
         _computer.SetActive(false);
         _notepad.SetActive(false);
+    }
+
+    public void TryDoor(DoorTrigger door)
+    {
+        _doorCode.Activate(door);
     }
 }

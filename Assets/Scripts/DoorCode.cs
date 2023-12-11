@@ -17,10 +17,18 @@ public class DoorCode : MonoBehaviour
 
     private string _inputPreview;
 
+    private DoorTrigger _currentDoor;
+
     private void Start()
     {
         _inputPreview = "";
         UpdatePreviewText();
+    }
+
+    public void Activate(DoorTrigger door)
+    {
+        this.gameObject.SetActive(true);
+        _currentDoor = door;
     }
 
     public void RegisterButtonPress(int input)
@@ -39,7 +47,7 @@ public class DoorCode : MonoBehaviour
 
         if (CheckCode())
         {
-            Debug.Log("Door opened!");
+            _currentDoor.Unlock();
         }
     }
 
