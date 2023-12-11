@@ -9,6 +9,7 @@ public class DisplayTextInteractable : Interactable
     [SerializeField]
     UIController.DisplayMode _displayMode;
 
+    [TextArea]
     [SerializeField]
     string _text;
 

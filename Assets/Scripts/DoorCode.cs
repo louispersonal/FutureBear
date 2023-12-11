@@ -12,8 +12,7 @@ public class DoorCode : MonoBehaviour
     [SerializeField]
     TMP_Text _textBox;
 
-    [SerializeField]
-    string code;
+    private string _currentCode;
 
     private string _inputPreview;
 
@@ -29,6 +28,7 @@ public class DoorCode : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         _currentDoor = door;
+        _currentCode = door.Code;
     }
 
     public void Deactivate()
@@ -62,7 +62,7 @@ public class DoorCode : MonoBehaviour
 
     private bool CheckCode()
     {
-        if (_inputPreview == code)
+        if (_inputPreview == _currentCode)
         {
             return true;
         }
