@@ -20,10 +20,14 @@ public class DoorTrigger : Interactable
     protected override void UnInteract()
     {
         base.UnInteract();
+
+        _gameController.UIController.CancelDoor();
     }
 
     public void Unlock()
     {
         this.transform.parent.gameObject.SetActive(false);
+
+        UnInteract();
     }
 }

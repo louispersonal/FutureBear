@@ -57,4 +57,9 @@ public class UIController : MonoBehaviour
     {
         _doorCode.Activate(door);
     }
+
+    public void CancelDoor()
+    {
+        _doorCode.Deactivate();
+    }
 }

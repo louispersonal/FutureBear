@@ -31,6 +31,14 @@ public class DoorCode : MonoBehaviour
         _currentDoor = door;
     }
 
+    public void Deactivate()
+    {
+        this.gameObject.SetActive(false);
+        _inputPreview = "";
+        UpdatePreviewText();
+        _currentDoor = null;
+    }
+
     public void RegisterButtonPress(int input)
     {
         if (input < 0)
