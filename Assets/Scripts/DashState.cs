@@ -4,33 +4,54 @@ using UnityEngine;
 
 public class DashState : PlayerBaseState
 {
+    [SerializeField]
+    float _dashSpeed;
+
+    [SerializeField]
+    float _dashTime;
+
+    private PlayerController _playerController;
+
+    public bool IsDashing;
+
     public override void EnterState(PlayerController playerController)
     {
-        throw new System.NotImplementedException();
+        _playerController = playerController;
+        IsDashing = true;
+        StartCoroutine(DashCoroutine());
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void OnCollisionEnter2DState(Collision2D collision)
     {
-        throw new System.NotImplementedException();
+        IsDashing = false;
+        StopCoroutine(DashCoroutine());
     }
 
     public override void OnCollisionExit2DState(Collision2D collision)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        _playerController.RigidBody.velocity = transform.up * _dashSpeed;
+        yield return new WaitForSeconds(_dashTime);
+        _playerController.RigidBody.velocity = Vector2.zero;
+        IsDashing = false;
     }
 }

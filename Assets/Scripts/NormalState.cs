@@ -9,6 +9,7 @@ public class NormalState : PlayerBaseState
 
     private PlayerController _playerController;
     private bool _lockRotation = false;
+    private float _horizontalInput, _verticalInput;
 
     public override void EnterState(PlayerController playerController)
     {
@@ -22,12 +23,16 @@ public class NormalState : PlayerBaseState
 
     public override void UpdateState()
     {
-
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     public override void FixedUpdateState()
     {
-        _playerController.RigidBody.MovePosition(new Vector3(_playerController.gameObject.transform.position.x + Input.GetAxis("Horizontal") * _movementSpeed, _playerController.gameObject.transform.position.y + Input.GetAxis("Vertical") * _movementSpeed, _playerController.gameObject.transform.position.z));
+        float horizontalVelocity = _horizontalInput * _movementSpeed;
+        float verticalVelocity = _verticalInput * _movementSpeed;
+        _playerController.RigidBody.velocity = new Vector2(horizontalVelocity, verticalVelocity);
+
         if (!_lockRotation)
         {
             RotateBody(_playerController);

@@ -92,6 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConditionList:
   - {fileID: 4850851781629641948}
+  _dashSpeed: 50
+  _dashTime: 0.2
+  IsDashing: 0
 --- !u!1 &3631854643308974624
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextState: {fileID: 7641993420455072636}
+  _dashState: {fileID: 5053085974472315465}
 --- !u!1 &7641993420455072638
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConditionList:
   - {fileID: 4745977959842949340}
-  _movementSpeed: 0.3
+  _movementSpeed: 15
 --- !u!1 &7641993420673746089
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +312,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7641993420673746092
 BoxCollider2D:
   m_ObjectHideFlags: 0
