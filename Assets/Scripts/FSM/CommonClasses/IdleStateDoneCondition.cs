@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndDashCondition : BaseCondition
+public class IdleStateDoneCondition : BaseCondition
 {
-    [SerializeField]
-    DashState _dashState;
-
     public override bool ExitCondition(StateController stateController)
     {
-        if (!_dashState.IsDashing)
-        {
-            return true;
-        }
+        // can not leave idle organically, must be forced
         return false;
     }
 }

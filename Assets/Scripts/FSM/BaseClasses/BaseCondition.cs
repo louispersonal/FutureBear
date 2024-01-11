@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseCondition : MonoBehaviour
 {
-    public PlayerBaseState NextState;
+    public BaseState NextState;
 
-    public abstract bool ExitCondition(PlayerController playerController);
+    public abstract bool ExitCondition(StateController stateController);
 }

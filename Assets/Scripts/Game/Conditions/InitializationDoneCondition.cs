@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndDashCondition : BaseCondition
+public class InitializationDoneCondition : BaseCondition
 {
     [SerializeField]
-    DashState _dashState;
+    InitializationState _initializationState;
 
     public override bool ExitCondition(StateController stateController)
     {
-        if (!_dashState.IsDashing)
-        {
-            return true;
-        }
-        return false;
+        return _initializationState.InitializationDone;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashState : PlayerBaseState
+public class DashState : BaseState
 {
     [SerializeField]
     float _dashSpeed;
@@ -14,9 +14,9 @@ public class DashState : PlayerBaseState
 
     public bool IsDashing;
 
-    public override void EnterState(PlayerController playerController)
+    public override void EnterState(StateController stateController)
     {
-        _playerController = playerController;
+        _playerController = stateController as PlayerController;
         IsDashing = true;
         StartCoroutine(DashCoroutine());
     }

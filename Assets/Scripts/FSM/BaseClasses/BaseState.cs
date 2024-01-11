@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerBaseState : MonoBehaviour
+public abstract class BaseState : MonoBehaviour
 {
     public List<BaseCondition> ConditionList;
 
@@ -10,7 +10,7 @@ public abstract class PlayerBaseState : MonoBehaviour
 
     public abstract void FixedUpdateState();
 
-    public abstract void EnterState(PlayerController playerController);
+    public abstract void EnterState(StateController stateController);
 
     public abstract void ExitState();
 

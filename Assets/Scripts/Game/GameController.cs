@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class GameController : MonoBehaviour
+public class GameController : StateController
 {
     private PopupPoolController _popupPoolController;
     public PopupPoolController PopupPoolController
@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour
     }
 
     private UIController _uIController;
-
     public UIController UIController
     {
         get
@@ -32,15 +31,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private ProjectilePoolController _projectilePoolController;
+    public ProjectilePoolController ProjectilePoolController
     {
-        Debug.Log("Started GameController");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get
+        {
+            if (_projectilePoolController == null)
+            {
+                _projectilePoolController = FindObjectOfType<ProjectilePoolController>();
+            }
+            return _projectilePoolController;
+        }
     }
 }

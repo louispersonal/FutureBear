@@ -9,18 +9,6 @@ public class PopupPoolController : MonoBehaviour
 
     private List<Popup> _popups = new List<Popup>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public Popup DisplayPopup(Vector2 popupPosition, string popupText)
     {
         Popup popup = GetAvailablePopup();

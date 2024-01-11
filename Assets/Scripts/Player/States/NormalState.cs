@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalState : PlayerBaseState
+public class NormalState : BaseState
 {
     [SerializeField]
     float _movementSpeed;
 
+    [SerializeField]
+    float _shootForce;
+
     private PlayerController _playerController;
+    private GameController _gameController;
     private bool _lockRotation = false;
     private float _horizontalInput, _verticalInput;
 
-    public override void EnterState(PlayerController playerController)
+    public override void EnterState(StateController stateController)
     {
-        _playerController = playerController;
+        _playerController = stateController as PlayerController;
+        _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     public override void ExitState()
@@ -25,6 +30,10 @@ public class NormalState : PlayerBaseState
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Shoot();
+        }
     }
 
     public override void FixedUpdateState()
@@ -57,5 +66,14 @@ public class NormalState : PlayerBaseState
     public override void OnCollisionExit2DState(Collision2D collision)
     {
         _lockRotation = false;
+    }
+
+    private void Shoot()
+    {
+        BaseProjectile projectile = _gameController.ProjectilePoolController.GetAvailableProjectile();
+        projectile.gameObject.SetActive(true);
+        projectile.RigidBody.rotation = _playerController.RigidBody.rotation;
+        projectile.RigidBody.position = _playerController.RigidBody.position;
+        projectile.RigidBody.AddForce(_shootForce * _playerController.RigidBody.transform.up);
     }
 }
