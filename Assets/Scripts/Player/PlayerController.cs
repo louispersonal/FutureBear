@@ -5,4 +5,6 @@ using UnityEngine;
 public class PlayerController : StateController
 {
     public Rigidbody2D RigidBody;
+
+    public Animator Animator;
 }

@@ -19,6 +19,7 @@ public class DashState : BaseState
         _playerController = stateController as PlayerController;
         IsDashing = true;
         StartCoroutine(DashCoroutine());
+        _playerController.Animator.SetTrigger("Dash");
     }
 
     public override void ExitState()
