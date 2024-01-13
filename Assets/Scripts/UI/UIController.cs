@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
@@ -9,27 +7,43 @@ public class UIController : MonoBehaviour
     GameObject _computer;
 
     [SerializeField]
-    GameObject _notepad;
+    GameObject _scrapPaper;
 
     [SerializeField]
     DoorCode _doorCode;
 
+    [SerializeField]
+    GameObject _notepad;
+
+    private bool _usingNotepad = true;
+    private PlayerController _playerController;
+
     public enum DisplayMode
     {
         COMPUTER,
-        NOTEPAD
+        SCRAP_PAPER
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Notepad"))
+        {
+            if (_usingNotepad && _playerController.CanOpenNotepad)
+            {
+                ExitNotepad();
+            }
+            else
+            {
+                AccessNotepad();
+            }
+        }
     }
 
     public void DisplayMessage(DisplayMode mode, string message)
@@ -40,17 +54,17 @@ public class UIController : MonoBehaviour
             _computer.GetComponentInChildren<TMP_Text>().text = message;
         }
 
-        else if (mode == DisplayMode.NOTEPAD)
+        else if (mode == DisplayMode.SCRAP_PAPER)
         {
-            _notepad.SetActive(true);
-            _notepad.GetComponentInChildren<TMP_Text>().text = message;
+            _scrapPaper.SetActive(true);
+            _scrapPaper.GetComponentInChildren<TMP_Text>().text = message;
         }
     }
 
     public void ClearMessages()
     {
         _computer.SetActive(false);
-        _notepad.SetActive(false);
+        _scrapPaper.SetActive(false);
     }
 
     public void TryDoor(DoorTrigger door)
@@ -61,5 +75,19 @@ public class UIController : MonoBehaviour
     public void CancelDoor()
     {
         _doorCode.Deactivate();
+    }
+
+    public void AccessNotepad()
+    {
+        _playerController.ForceIdle();
+        _notepad.SetActive(true);
+        _usingNotepad = true;
+    }
+
+    public void ExitNotepad()
+    {
+        _notepad.SetActive(false);
+        _usingNotepad = false;
+        _playerController.ForceResumeLastState();
     }
 }

@@ -19,11 +19,12 @@ public class NormalState : BaseState
     {
         _playerController = stateController as PlayerController;
         _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        _playerController.CanOpenNotepad = true;
     }
 
     public override void ExitState()
     {
-        
+        _playerController.CanOpenNotepad = false;
     }
 
     public override void UpdateState()
