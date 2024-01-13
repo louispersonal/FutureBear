@@ -7,7 +7,20 @@ public class PopupPoolController : MonoBehaviour
     [SerializeField]
     Popup _popupPrefab;
 
+    [SerializeField]
+    int _initialPoolCount;
+
     private List<Popup> _popups = new List<Popup>();
+
+    void Start()
+    {
+        for (int i = 0; i < _initialPoolCount; i++)
+        {
+            Popup popup = Instantiate(_popupPrefab, this.transform);
+            _popups.Add(popup);
+            popup.gameObject.SetActive(false);
+        }
+    }
 
     public Popup DisplayPopup(Vector2 popupPosition, string popupText)
     {

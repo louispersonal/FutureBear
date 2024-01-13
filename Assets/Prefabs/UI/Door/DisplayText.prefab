@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 945352650730717069}
   - component: {fileID: 945352650730717067}
   - component: {fileID: 945352650730717066}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DisplayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerTag: Player
-  _interactPrompt: {fileID: 0}
+  _displayMode: 0
   _text: 
 --- !u!61 &945352650730717066
 BoxCollider2D:

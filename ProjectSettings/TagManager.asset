@@ -51,11 +51,11 @@ TagManager:
   - name: Objects
     uniqueID: 1346008731
     locked: 0
-  - name: Player
-    uniqueID: 3774476097
-    locked: 0
   - name: Projectiles
     uniqueID: 1805281607
+    locked: 0
+  - name: Player
+    uniqueID: 3774476097
     locked: 0
   - name: Popups
     uniqueID: 2837302607

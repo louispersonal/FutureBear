@@ -6,7 +6,7 @@ public class DashCondition : BaseCondition
 {
     public override bool ExitCondition(StateController stateController)
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Fire2"))
         {
             return true;
         }
