@@ -75,6 +75,7 @@ public class NormalState : BaseState
         projectile.gameObject.SetActive(true);
         projectile.RigidBody.rotation = _playerController.RigidBody.rotation;
         projectile.RigidBody.position = _playerController.RigidBody.position;
+        projectile.RigidBody.velocity = _playerController.RigidBody.velocity;
         projectile.RigidBody.AddForce(_shootForce * _playerController.RigidBody.transform.up);
     }
 }
