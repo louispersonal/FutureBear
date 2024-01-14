@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2291904270962725048}
   - component: {fileID: 1886397428699185808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5451466632733889285}
   - component: {fileID: 6643928713095905646}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top Edge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 9192719043422722423}
   - component: {fileID: 5217628977353987025}
   - component: {fileID: 1120888978872096056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 1145257233638362192}
   - component: {fileID: 7348301766284650509}
   - component: {fileID: 604384623964455098}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerTag: Player
+  _code: 
 --- !u!61 &604384623964455098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -377,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5260831725675013139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992613872948323}
   - component: {fileID: 8716992613872948322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +543,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992614447416692}
   - component: {fileID: 8716992614447416693}
-  m_Layer: 0
+  - component: {fileID: 5978906230458404352}
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,6 +618,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5978906230458404352
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8716992614447416690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 66.56, y: 37.602497}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 66.56, y: 37.602497}
+  m_EdgeRadius: 0
 --- !u!1 &8716992615107453421
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8716992615107453420}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615300457721}
   - component: {fileID: 8716992615300457720}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8716992615483198348}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +779,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8716992615599839903}
-  m_Layer: 0
+  - component: {fileID: 9073573919144661834}
+  m_Layer: 7
   m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,6 +806,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9073573919144661834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8716992615599839900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf2c6209d97d18449976b5f56f10742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floorCollider: {fileID: 5978906230458404352}
 --- !u!1 &8716992615650701071
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615650701070}
   - component: {fileID: 8716992615650701073}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615694632578}
   - component: {fileID: 8716992615694632581}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,7 +1014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615726247870}
   - component: {fileID: 8716992615726247809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615770887061}
   - component: {fileID: 8716992615770887060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bottom Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615798464292}
   - component: {fileID: 8716992615798464295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716992615907642143}
   - component: {fileID: 8716992615907642142}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bottom Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
