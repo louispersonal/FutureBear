@@ -43,4 +43,30 @@ public class GameController : StateController
             return _projectilePoolController;
         }
     }
+
+    private AllRoomsController _allRoomsController;
+    public AllRoomsController AllRoomsController
+    {
+        get
+        {
+            if (_allRoomsController == null)
+            {
+                _allRoomsController = FindObjectOfType<AllRoomsController>();
+            }
+            return _allRoomsController;
+        }
+    }
+
+    private PlayerController _playerController;
+    public PlayerController PlayerController
+    {
+        get
+        {
+            if (_playerController == null)
+            {
+                _playerController = FindObjectOfType<PlayerController>();
+            }
+            return _playerController;
+        }
+    }
 }

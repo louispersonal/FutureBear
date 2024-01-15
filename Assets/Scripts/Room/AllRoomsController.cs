@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 
@@ -27,5 +28,31 @@ public class AllRoomsController : MonoBehaviour
         {
             _rooms[i].RoomID = i;
         }
+    }
+
+    public int GetRoomIDForPoint(Vector2 point)
+    {
+        for (int i = 0; i < _rooms.Count; i++)
+        {
+            if (_rooms[i].IsPointInRoom(point))
+            {
+                return _rooms[i].RoomID;
+            }
+        }
+        Debug.Log("Point is not in room");
+        return -1;
+    }
+
+    public Room GetRoomFromRoomID(int roomID)
+    {
+        for (int i = 0; i < _rooms.Count; i++)
+        {
+            if (_rooms[i].RoomID == roomID)
+            {
+                return _rooms[i];
+            }
+        }
+        Debug.LogError("No room found for ID " + roomID);
+        return null;
     }
 }
