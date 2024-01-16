@@ -662,9 +662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef4ea000a57ef847b5160d613b0cd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _circleCollider: {fileID: 0}
-  _radialAcceleration: 0.1
-  _baseForce: 0
+  _circleCollider: {fileID: 239382236}
+  _radialAcceleration: 1
+  _baseForce: 1
 --- !u!4 &256617030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6872893805787119073, guid: e32a00e40c8184340b0f55523ddb3a62, type: 3}
@@ -1478,7 +1478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &646946126
 Transform:
   m_ObjectHideFlags: 0
@@ -3518,6 +3518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConditionList:
   - {fileID: 2045856958}
+  CollidedWithSomething: 0
   _maxTries: 5
   _movementSpeed: 10
 --- !u!1 &1822774226
