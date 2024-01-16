@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackStateDoneCondition : BaseCondition
+public class GoToFleeStateCondition : BaseCondition
 {
     [SerializeField]
-    AttackState _attackState;
+    DecisionState _decisionState;
 
     public override bool ExitCondition(StateController stateController)
     {
-        return _attackState.DoneAttacking;
+        return _decisionState.GoToFleeState;
     }
 }

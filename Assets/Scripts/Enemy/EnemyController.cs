@@ -32,4 +32,14 @@ public class EnemyController : StateController
     {
         return Vector2.Distance(GameController.PlayerController.transform.position, this.transform.position);
     }
+
+
+    public void FacePlayer()
+    {
+        Vector3 difference = GameController.PlayerController.transform.position - this.transform.position;
+
+        float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
+
+        RigidBody.rotation = angle;
+    }
 }

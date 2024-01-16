@@ -20,6 +20,7 @@ public class FleeState : BaseState
 
     public override void EnterState(StateController stateController)
     {
+        Debug.Log("Entering flee state");
         _enemyController = stateController as EnemyController;
         CollidedWithSomething = false;
         SetTarget();
@@ -27,7 +28,7 @@ public class FleeState : BaseState
 
     public override void ExitState()
     {
-
+        _enemyController.RigidBody.velocity = Vector2.zero;
     }
 
     public override void FixedUpdateState()
@@ -66,7 +67,6 @@ public class FleeState : BaseState
             if (_enemyController.SubjectiveRaycast2D(_targetPosition - (Vector2)_enemyController.transform.position, distanceToTarget).collider != null)
             {
                 targetSet = true;
-                Debug.Log(_enemyController + " found cover at " + _targetPosition);
             }
             tries++;
         }
