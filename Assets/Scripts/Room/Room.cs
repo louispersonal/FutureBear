@@ -33,10 +33,36 @@ public class Room : MonoBehaviour
 
     public Vector2 GetRandomPointInRoom()
     {
+        // returns answer in World Space
         float width = _floorCollider.size.x;
         float height = _floorCollider.size.y;
-        Vector2 randomPointFromCenterUnrotated = new Vector2(Random.Range(-width / 2, width / 2), Random.Range(-height / 2, height / 2));
-        return RotatePointAboutOrigin(randomPointFromCenterUnrotated, Mathf.Deg2Rad * _floorCollider.transform.eulerAngles.z) + (Vector2)_floorCollider.transform.position;
+        Vector2 randomPointInRoomSpace = new Vector2(Random.Range(-width / 2, width / 2), Random.Range(-height / 2, height / 2));
+        return RoomPointToWorldPoint(randomPointInRoomSpace);
+    }
+
+    public Vector2 GetRandomPointInRoomWithBoundingPoint(Vector2 boundingPoint, Vector2 subjectPoint)
+    {
+        // bounding Point must be given in Room Space
+        // we want to find a random point in the room such that the subject point would not pass the bounding point if it traveled towards the random point
+        float width = _floorCollider.size.x;
+        float height = _floorCollider.size.y;
+        Vector2 difference = boundingPoint - subjectPoint;
+        Vector2 result = Vector2.zero;
+        result.x = (difference.x < 0) ? Random.Range(boundingPoint.x, width / 2) : Random.Range(-width / 2, boundingPoint.x);
+        result.y = (difference.y < 0) ? Random.Range(boundingPoint.y, height / 2) : Random.Range(-height / 2, boundingPoint.y);
+        return WorldPointToRoomPoint(result);
+    }
+
+    public Vector2 WorldPointToRoomPoint(Vector2 worldPoint)
+    {
+        // assuming the transform of the room is the origin
+        return RotatePointAboutOrigin(worldPoint - (Vector2)_floorCollider.transform.position, -Mathf.Deg2Rad * _floorCollider.transform.eulerAngles.z);
+    }
+
+    public Vector2 RoomPointToWorldPoint(Vector2 roomPoint)
+    {
+        // assuming the transform of the room is the origin
+        return RotatePointAboutOrigin(roomPoint, Mathf.Deg2Rad * _floorCollider.transform.eulerAngles.z) + (Vector2)_floorCollider.transform.position;
     }
 
     public Vector2 RotatePointAboutOrigin(Vector2 point, float angle)

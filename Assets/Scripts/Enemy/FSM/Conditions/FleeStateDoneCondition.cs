@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class FleeStateDoneCondition : BaseCondition
 {
+    [SerializeField]
+    FleeState _fleeState;
+
     public override bool ExitCondition(StateController stateController)
     {
-        return false;
+        return _fleeState.ReachedTarget() || _fleeState.CollidedWithSomething;
     }
 }

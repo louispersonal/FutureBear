@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FleeState : BaseState
 {
+    [HideInInspector]
+    public bool CollidedWithSomething;
+
     [SerializeField]
     int _maxTries;
 
@@ -18,6 +21,7 @@ public class FleeState : BaseState
     public override void EnterState(StateController stateController)
     {
         _enemyController = stateController as EnemyController;
+        CollidedWithSomething = false;
         SetTarget();
     }
 
@@ -35,7 +39,7 @@ public class FleeState : BaseState
 
     public override void OnCollisionEnter2DState(Collision2D collision)
     {
-
+        CollidedWithSomething = true;
     }
 
     public override void OnCollisionExit2DState(Collision2D collision)
@@ -52,11 +56,12 @@ public class FleeState : BaseState
 
     private void SetTarget()
     {
+        Vector2 playerPosition = _enemyController.GameController.PlayerController.transform.position;
         bool targetSet = false;
         int tries = 0;
         while (!targetSet && tries < _maxTries)
         {
-            _targetPosition = _enemyController.GameController.AllRoomsController.GetRoomFromRoomID(_enemyController.GetCurrentRoomID()).GetRandomPointInRoom();
+            _targetPosition = _enemyController.GameController.AllRoomsController.GetRoomFromRoomID(_enemyController.GetCurrentRoomID()).GetRandomPointInRoomWithBoundingPoint(playerPosition, _enemyController.transform.position);
             float distanceToTarget = Vector2.Distance(_targetPosition, _enemyController.transform.position);
             if (_enemyController.SubjectiveRaycast2D(_targetPosition - (Vector2)_enemyController.transform.position, distanceToTarget).collider != null)
             {
@@ -65,5 +70,14 @@ public class FleeState : BaseState
             }
             tries++;
         }
+    }
+
+    public bool ReachedTarget()
+    {
+        if (Vector2.Distance(_enemyController.transform.position, _targetPosition) <= _movementSpeed)
+        {
+            return true;
+        }
+        return false;
     }
 }
