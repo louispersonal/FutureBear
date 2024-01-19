@@ -67,6 +67,7 @@ public class Room : MonoBehaviour
 
     public Vector2 RotatePointAboutOrigin(Vector2 point, float angle)
     {
+        // angle in rads
         return new Vector2((point.x * Mathf.Cos(angle) - point.y * Mathf.Sin(angle)), (point.y * Mathf.Cos(angle) + point.x * Mathf.Sin(angle)));
     }
 }
