@@ -11,6 +11,9 @@ public class EnemyController : StateController
 
     public float LineOfSightRange;
 
+    [SerializeField]
+    float _rotationSpeed;
+
     protected override void Start()
     {
         GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -34,12 +37,30 @@ public class EnemyController : StateController
     }
 
 
-    public void FacePlayer()
+    public void RotateTowardsFacePlayer()
+    {
+        Vector2 difference = GameController.PlayerController.transform.position - this.transform.position;
+
+        float relativeAngle = Vector2.SignedAngle(this.transform.up, difference);
+
+        if (Mathf.Abs(relativeAngle) < _rotationSpeed * Time.deltaTime)
+        {
+            RigidBody.rotation = RigidBody.rotation + relativeAngle;
+        }
+
+        else
+        {
+            RigidBody.rotation = RigidBody.rotation + (Mathf.Sign(relativeAngle) * _rotationSpeed * Time.deltaTime);
+        }
+        Debug.Log("rotating " + relativeAngle);
+    }
+
+    public bool IsFacingPlayer()
     {
         Vector3 difference = GameController.PlayerController.transform.position - this.transform.position;
 
-        float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
+        float angle = Vector2.SignedAngle(this.transform.up, difference);
 
-        RigidBody.rotation = angle;
+        return angle == 0;
     }
 }

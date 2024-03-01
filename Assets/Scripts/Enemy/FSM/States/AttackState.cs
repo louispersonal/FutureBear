@@ -47,8 +47,8 @@ public class AttackState : BaseState
 
     public override void UpdateState()
     {
-        _enemyController.FacePlayer();
-        if ( !delayingShoot )
+        _enemyController.RotateTowardsFacePlayer();
+        if ( !delayingShoot && _enemyController.IsFacingPlayer() )
         {
             StartCoroutine(ShootDelay());
             Shoot();
