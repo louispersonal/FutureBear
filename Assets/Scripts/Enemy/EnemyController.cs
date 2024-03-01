@@ -43,16 +43,16 @@ public class EnemyController : StateController
 
         float relativeAngle = Vector2.SignedAngle(this.transform.up, difference);
 
-        if (Mathf.Abs(relativeAngle) < _rotationSpeed * Time.deltaTime)
+        if (Mathf.Abs(relativeAngle) < _rotationSpeed)
         {
             RigidBody.rotation = RigidBody.rotation + relativeAngle;
+            Debug.Log("facing player: " + relativeAngle);
         }
 
         else
         {
-            RigidBody.rotation = RigidBody.rotation + (Mathf.Sign(relativeAngle) * _rotationSpeed * Time.deltaTime);
+            RigidBody.rotation = RigidBody.rotation + (Mathf.Sign(relativeAngle) * _rotationSpeed);
         }
-        Debug.Log("rotating " + relativeAngle);
     }
 
     public bool IsFacingPlayer()
@@ -62,5 +62,11 @@ public class EnemyController : StateController
         float angle = Vector2.SignedAngle(this.transform.up, difference);
 
         return angle == 0;
+    }
+
+    public void ZeroAllVelocities()
+    {
+        RigidBody.angularVelocity = 0f;
+        RigidBody.velocity = Vector2.zero;
     }
 }

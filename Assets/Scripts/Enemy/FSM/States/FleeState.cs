@@ -33,10 +33,10 @@ public class FleeState : BaseState
 
     public override void FixedUpdateState()
     {
+        _enemyController.ZeroAllVelocities();
         float horizontalVelocity = _horizontalMovement * _movementSpeed;
         float verticalVelocity = _verticalMovement * _movementSpeed;
         _enemyController.RigidBody.velocity = new Vector2(horizontalVelocity, verticalVelocity);
-        _enemyController.RigidBody.angularVelocity = 0f;
     }
 
     public override void OnCollisionEnter2DState(Collision2D collision)

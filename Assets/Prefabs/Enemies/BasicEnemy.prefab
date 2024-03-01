@@ -198,7 +198,7 @@ MonoBehaviour:
   GameController: {fileID: 0}
   RigidBody: {fileID: 8720018747766014628}
   LineOfSightRange: 10
-  _rotationSpeed: 50
+  _rotationSpeed: 5
 --- !u!212 &8720018747766014630
 SpriteRenderer:
   m_ObjectHideFlags: 0

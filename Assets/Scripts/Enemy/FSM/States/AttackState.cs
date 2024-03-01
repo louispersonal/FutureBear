@@ -32,7 +32,8 @@ public class AttackState : BaseState
 
     public override void FixedUpdateState()
     {
-
+        _enemyController.ZeroAllVelocities();
+        _enemyController.RotateTowardsFacePlayer();
     }
 
     public override void OnCollisionEnter2DState(Collision2D collision)
@@ -47,7 +48,6 @@ public class AttackState : BaseState
 
     public override void UpdateState()
     {
-        _enemyController.RotateTowardsFacePlayer();
         if ( !delayingShoot && _enemyController.IsFacingPlayer() )
         {
             StartCoroutine(ShootDelay());
