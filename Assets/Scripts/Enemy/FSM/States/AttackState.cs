@@ -62,11 +62,10 @@ public class AttackState : BaseState
     public void Shoot()
     {
         BaseProjectile projectile = _enemyController.GameController.ProjectilePoolController.GetAvailableProjectile();
+        projectile.transform.rotation = _enemyController.transform.rotation;
+        projectile.transform.position = _enemyController.transform.position;
         projectile.gameObject.SetActive(true);
-        projectile.RigidBody.rotation = _enemyController.RigidBody.rotation;
-        projectile.RigidBody.position = _enemyController.RigidBody.position;
-        projectile.RigidBody.velocity = _enemyController.RigidBody.velocity;
-        projectile.RigidBody.AddForce(_shootForce * _enemyController.RigidBody.transform.up);
+        projectile.RigidBody.AddForce(_shootForce * _enemyController.transform.up);
     }
 
     private IEnumerator ShootDelay()

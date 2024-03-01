@@ -72,10 +72,9 @@ public class NormalState : BaseState
     private void Shoot()
     {
         BaseProjectile projectile = _gameController.ProjectilePoolController.GetAvailableProjectile();
+        projectile.transform.rotation = _playerController.transform.rotation;
+        projectile.transform.position = _playerController.transform.position;
         projectile.gameObject.SetActive(true);
-        projectile.RigidBody.rotation = _playerController.RigidBody.rotation;
-        projectile.RigidBody.position = _playerController.RigidBody.position;
-        projectile.RigidBody.velocity = _playerController.RigidBody.velocity;
-        projectile.RigidBody.AddForce(_shootForce * _playerController.RigidBody.transform.up);
+        projectile.RigidBody.AddForce(_shootForce * _playerController.transform.up);
     }
 }
