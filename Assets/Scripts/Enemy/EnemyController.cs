@@ -46,7 +46,6 @@ public class EnemyController : StateController
         if (Mathf.Abs(relativeAngle) < _rotationSpeed)
         {
             RigidBody.rotation = RigidBody.rotation + relativeAngle;
-            Debug.Log("facing player: " + relativeAngle);
         }
 
         else
